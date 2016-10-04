@@ -7,8 +7,8 @@ class AttendantsController < ApplicationController
     end
 
     def create
-        @attendant = CreateAttendantWithQuestions.call attendant_params, params[:questions]
-        if @attendant.valid?
+        @attendant = Attendant.new(attendant_params)
+        if @attendant.save
             render json: @attendant, status: :ok
         else
             render json: {errors: @attendant.errors.messages}, status: :bad_request
@@ -18,7 +18,7 @@ class AttendantsController < ApplicationController
     private
 
     def attendant_params
-        params.permit(:name, :surname, :email, :phone, :university, :vegetarian, :roommate,
-            :sms, :invoice, :invoice_university, :invoice_address, :invoice_nip)
+        params.permit(:name, :surname, :email, :phone, :university, :ticket, :payment, :questions,
+        :diet, :roommate, :invoice_university, :invoice_address, :invoice_nip, :sms, :agree)
     end
 end

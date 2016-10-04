@@ -6,13 +6,18 @@ class CreateAttendants < ActiveRecord::Migration[5.0]
       t.string :email
       t.string :phone
       t.string :university
-      t.boolean :vegetarian, default: false
+      t.string :ticket, default: 1
+      t.string :payment, default: 1
+      t.string :questions
+      t.string :diet, default: 1
       t.string :roommate
-      t.boolean :sms, default: false
-      t.boolean :invoice, default: false
+
       t.string :invoice_university
       t.string :invoice_address
       t.string :invoice_nip
+
+      t.boolean :sms, default: false
+      t.boolean :agree, default: false
 
       t.timestamps
     end
