@@ -15,6 +15,10 @@ class AttendantsController < ApplicationController
         end
     end
 
+    def generate_csv
+        send_data Attendant.all.to_csv
+    end
+
     private
 
     def attendant_params
